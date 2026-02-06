@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Incursa.Template/Incursa.Template.csproj" />
+  </Folder>
+
+  <Folder Name="/tests/">
+    <Project Path="tests/Incursa.Template.Tests/Incursa.Template.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Cache NuGet
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/packages.lock.json', '**/*.csproj', 'Directory.Packages.props', 'global.json') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      - name: Locate solution
+        id: sln
+        shell: pwsh
+        run: |
+          $sln = Get-ChildItem -Path . -Filter *.slnx | Select-Object -First 1
+          if (-not $sln) { $sln = Get-ChildItem -Path . -Filter *.sln | Select-Object -First 1 }
+          if (-not $sln) { throw "No solution file found at repo root." }
+          "sln=$($sln.Name)" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+
+      - name: Restore
+        run: dotnet restore ${{ steps.sln.outputs.sln }}
+
+      - name: Build
+        run: dotnet build ${{ steps.sln.outputs.sln }} -c Release --no-restore -p:ContinuousIntegrationBuild=true
+
+      - name: Test (exclude integration)
+        run: dotnet test ${{ steps.sln.outputs.sln }} -c Release --no-build --filter "Category!=Integration&RequiresDocker!=true"

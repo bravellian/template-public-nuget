@@ -1,0 +1,5 @@
+<Project Sdk="MSTest.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Incursa.Template\Incursa.Template.csproj" />
+  </ItemGroup>
+</Project>

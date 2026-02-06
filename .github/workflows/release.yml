@@ -1,0 +1,76 @@
+name: Release (NuGet)
+
+on:
+  push:
+    tags:
+      - "v*"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  pack_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Cache NuGet
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/packages.lock.json', '**/*.csproj', 'Directory.Packages.props', 'global.json') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      - name: Locate solution
+        id: sln
+        shell: pwsh
+        run: |
+          $sln = Get-ChildItem -Path . -Filter *.slnx | Select-Object -First 1
+          if (-not $sln) { $sln = Get-ChildItem -Path . -Filter *.sln | Select-Object -First 1 }
+          if (-not $sln) { throw "No solution file found at repo root." }
+          "sln=$($sln.Name)" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+
+      - name: Determine version from tag
+        id: version
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}"
+          $version = $tag.TrimStart("v")
+          if (-not $version) { throw "Could not parse version from tag: $tag" }
+          "semVer=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+
+      - name: Restore
+        run: dotnet restore ${{ steps.sln.outputs.sln }}
+
+      - name: Build
+        run: dotnet build ${{ steps.sln.outputs.sln }} -c Release --no-restore -p:ContinuousIntegrationBuild=true -p:Version=${{ steps.version.outputs.semVer }}
+
+      - name: Test (exclude integration)
+        run: dotnet test ${{ steps.sln.outputs.sln }} -c Release --no-build --filter "Category!=Integration&RequiresDocker!=true"
+
+      - name: Pack
+        run: pwsh -NoProfile -File ./scripts/pack.ps1 -Configuration Release -Version ${{ steps.version.outputs.semVer }} -SkipRestore -SkipBuild
+
+      - name: Push to NuGet.org
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          if [ -z "$NUGET_API_KEY" ]; then
+            echo "NUGET_API_KEY is not configured."
+            exit 1
+          fi
+          dotnet nuget push "./artifacts/packages/*.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key "$NUGET_API_KEY" --skip-duplicate
+          dotnet nuget push "./artifacts/packages/*.snupkg" --source "https://api.nuget.org/v3/index.json" --api-key "$NUGET_API_KEY" --skip-duplicate
