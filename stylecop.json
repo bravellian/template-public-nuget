@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
   "settings": {
     "documentationRules": {
-      "companyName": "Incursa",
+      "companyName": "Bravellian",
       "copyrightText": "CONFIDENTIAL - Copyright (c) {companyName}. All rights reserved.\nSee NOTICE.md for full restrictions and usage terms.",
       "variables": {
       },

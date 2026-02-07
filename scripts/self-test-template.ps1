@@ -1,5 +1,5 @@
 param(
-    [string]$Name = "Incursa.Sample.Library",
+    [string]$Name = "Bravellian.Sample.Library",
     [switch]$KeepTemp
 )
 
@@ -67,7 +67,7 @@ try {
         Invoke-External -Description "dotnet build" -FilePath "dotnet" -Arguments @("build", $solution.Name, "-c", "Release", "--no-restore")
         Invoke-External -Description "dotnet test" -FilePath "dotnet" -Arguments @("test", "--solution", $solution.Name, "-c", "Release", "--no-build", "--filter", "Category!=Integration&RequiresDocker!=true")
 
-        $needleA = "Incursa" + ".Template"
+        $needleA = "Bravellian" + ".Template"
         $needleB = "Class" + "1"
         $searchPattern = [regex]::Escape($needleA) + "|" + [regex]::Escape($needleB)
 

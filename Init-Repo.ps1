@@ -10,7 +10,7 @@ $ErrorActionPreference = "Stop"
 $scriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $scriptRoot
 
-$templateName = ("Incursa" + ".Template")
+$templateName = ("Bravellian" + ".Template")
 $templateTestsName = "$templateName.Tests"
 $templateClassName = ("Class" + "1")
 

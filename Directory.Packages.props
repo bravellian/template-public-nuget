@@ -21,4 +21,5 @@
     <PackageVersion Include="NSubstitute" Version="5.3.0" />
     <PackageVersion Include="NSubstitute.Analyzers.CSharp" Version="1.0.17" />
   </ItemGroup>
+  <Import Project="Directory.Packages.Custom.props" Condition="Exists('Directory.Packages.Custom.props')" />
 </Project>

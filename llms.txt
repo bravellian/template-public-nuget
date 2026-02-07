@@ -1,6 +1,6 @@
-# Incursa .NET Library Template
+# Bravellian .NET Library Template
 
-Template repository for private Incursa .NET libraries.
+Template repository for private Bravellian .NET libraries.
 
 Primary layout:
 - `src/` contains packable libraries.
@@ -9,11 +9,11 @@ Primary layout:
 - Central package management is defined in `Directory.Packages.props`.
 
 Primary solution:
-- Default template solution is `Incursa.Template.slnx`.
+- Default template solution is `Bravellian.Template.slnx`.
 - Consumers typically rename it when initializing from the template.
 
 Core commands:
-- Restore: `dotnet restore Incursa.Template.slnx`
-- Build: `dotnet build Incursa.Template.slnx -c Release`
-- Test: `dotnet test Incursa.Template.slnx -c Release`
-- Pack: `dotnet pack Incursa.Template.slnx -c Release -o ./nupkgs`
+- Restore: `dotnet restore Bravellian.Template.slnx`
+- Build: `dotnet build Bravellian.Template.slnx -c Release`
+- Test: `dotnet test Bravellian.Template.slnx -c Release`
+- Pack: `dotnet pack Bravellian.Template.slnx -c Release -o ./nupkgs`

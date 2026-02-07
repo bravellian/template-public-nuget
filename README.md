@@ -1,4 +1,4 @@
-# Incursa Public .NET Library Template
+# Bravellian Public .NET Library Template
 
 This repository is a **template** for public NuGet libraries.
 
@@ -12,9 +12,9 @@ This repository is a **template** for public NuGet libraries.
 ## Build and Test
 
 ```bash
-dotnet restore Incursa.Template.slnx
-dotnet build Incursa.Template.slnx -c Release
-dotnet test Incursa.Template.slnx -c Release
+dotnet restore Bravellian.Template.slnx
+dotnet build Bravellian.Template.slnx -c Release
+dotnet test Bravellian.Template.slnx -c Release
 ```
 
 ## Pack (local)

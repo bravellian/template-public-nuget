@@ -48,7 +48,7 @@ rg --files -g "*.cshtml"
 ## Find Module Marker Interfaces
 ```bash
 rg -n "\bclass\s+\w+\s*:\s*[^\n]*\b(I|IFullStack|IBackground|IEngine|IApi)Module\b" -g "*.cs"
-rg -n "\bIModuleDefinition\b|\bIIncursaNavModuleMetadata\b" -g "*.cs"
+rg -n "\bIModuleDefinition\b|\bIBravellianNavModuleMetadata\b" -g "*.cs"
 ```
 
 ## Find Custom Generated File Definitions

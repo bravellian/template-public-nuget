@@ -135,7 +135,7 @@ M:Microsoft.EntityFrameworkCore.DbSet`1.AddAsync(``0);Use .Add()
 M:Microsoft.EntityFrameworkCore.DbSet`1.AddAsync`1(``0,System.Threading.CancellationToken);Use .Add()
 
 // ========================
-// Stripe SDK - Should only be used in Incursa.Integrations.Stripe module
+// Stripe SDK - Should only be used in Bravellian.Integrations.Stripe module
 // These types enforce the boundary between internal billing logic and Stripe-specific implementation
 T:Stripe.StripeClient;Use IBillingProvider abstraction instead of direct Stripe SDK access
 T:Stripe.CustomerService;Use IBillingProvider abstraction instead of direct Stripe SDK access

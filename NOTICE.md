@@ -1,7 +1,7 @@
-Incursa Open Source Projects
-https://github.com/incursa
+Bravellian Open Source Projects
+https://github.com/bravellian
 
-Copyright (c) Incursa contributors.
+Copyright (c) Bravellian contributors.
 
 Licensed under the Apache License, Version 2.0 (the "License").
 You may not use this file except in compliance with the License.

@@ -1,9 +1,9 @@
-// <copyright file="Class1.cs" company="Incursa">
-// CONFIDENTIAL - Copyright (c) Incursa. All rights reserved.
+// <copyright file="Class1.cs" company="Bravellian">
+// CONFIDENTIAL - Copyright (c) Bravellian. All rights reserved.
 // See NOTICE.md for full restrictions and usage terms.
 // </copyright>
 
-namespace Incursa.Template;
+namespace Bravellian.Template;
 
 public static class Class1
 {

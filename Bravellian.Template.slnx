@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Bravellian.Template/Bravellian.Template.csproj" />
+  </Folder>
+
+  <Folder Name="/tests/">
+    <Project Path="tests/Bravellian.Template.Tests/Bravellian.Template.Tests.csproj" />
+  </Folder>
+</Solution>

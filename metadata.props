@@ -1,9 +1,9 @@
 <Project>
   <!-- Metadata applied to ALL C# projects. -->
   <PropertyGroup>
-    <Company>Incursa</Company>
-    <Authors>Incursa</Authors>
-    <Copyright>Copyright (c) Incursa contributors.</Copyright>
+    <Company>Bravellian</Company>
+    <Authors>Bravellian</Authors>
+    <Copyright>Copyright (c) Bravellian contributors.</Copyright>
 
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RepositoryUrl Condition="'$(RepositoryUrl)' == '' AND '$(GITHUB_SERVER_URL)' != '' AND '$(GITHUB_REPOSITORY)' != ''">$(GITHUB_SERVER_URL)/$(GITHUB_REPOSITORY)</RepositoryUrl>

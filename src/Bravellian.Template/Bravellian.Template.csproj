@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Description>Incursa public NuGet library template.</Description>
-    <PackageTags>incursa;template;nuget</PackageTags>
+    <Description>Bravellian public NuGet library template.</Description>
+    <PackageTags>bravellian;template;nuget</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

@@ -6,7 +6,7 @@
 
   <PropertyGroup>
     <IsAnalyzerOrGenerator>false</IsAnalyzerOrGenerator>
-    <IsAnalyzerOrGenerator Condition="'$(MSBuildProjectExtension)' == '.csproj' AND ($([System.String]::Copy('$(MSBuildProjectName)').StartsWith('Incursa.Generators')) OR $([System.String]::Copy('$(MSBuildProjectName)').StartsWith('Incursa.Analyzers')))">true</IsAnalyzerOrGenerator>
+    <IsAnalyzerOrGenerator Condition="'$(MSBuildProjectExtension)' == '.csproj' AND ($([System.String]::Copy('$(MSBuildProjectName)').StartsWith('Bravellian.Generators')) OR $([System.String]::Copy('$(MSBuildProjectName)').StartsWith('Bravellian.Analyzers')))">true</IsAnalyzerOrGenerator>
 
     <IsTestProject>false</IsTestProject>
     <IsTestProject Condition="'$(MSBuildProjectExtension)' == '.csproj' AND ($([System.String]::Copy('$(MSBuildProjectName)').EndsWith('Tests')) OR $([System.String]::Copy('$(MSBuildProjectName)').EndsWith('.Tests')))">true</IsTestProject>
