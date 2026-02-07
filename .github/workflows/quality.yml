@@ -46,4 +46,4 @@ jobs:
         run: dotnet build ${{ steps.sln.outputs.sln }} -c Release --no-restore -p:ContinuousIntegrationBuild=true
 
       - name: Test (exclude integration)
-        run: dotnet test ${{ steps.sln.outputs.sln }} -c Release --no-build --filter "Category!=Integration&RequiresDocker!=true"
+        run: dotnet test --solution ${{ steps.sln.outputs.sln }} -c Release --no-build --filter "Category!=Integration&RequiresDocker!=true"
