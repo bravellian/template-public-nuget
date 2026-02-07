@@ -14,7 +14,7 @@ This repository is a **template** for public NuGet libraries.
 ```bash
 dotnet restore Bravellian.Template.slnx
 dotnet build Bravellian.Template.slnx -c Release
-dotnet test Bravellian.Template.slnx -c Release
+dotnet test --solution Bravellian.Template.slnx -c Release
 ```
 
 ## Pack (local)

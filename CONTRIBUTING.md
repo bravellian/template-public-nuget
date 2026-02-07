@@ -8,7 +8,7 @@ Thanks for contributing.
 2. Restore/build/test:
    - `dotnet restore *.slnx`
    - `dotnet build *.slnx -c Release`
-   - `dotnet test *.slnx -c Release`
+   - `dotnet test --solution *.slnx -c Release`
 3. Run local quality checks (optional):
    - `pre-commit run --all-files`
 

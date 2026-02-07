@@ -15,5 +15,5 @@ Primary solution:
 Core commands:
 - Restore: `dotnet restore Bravellian.Template.slnx`
 - Build: `dotnet build Bravellian.Template.slnx -c Release`
-- Test: `dotnet test Bravellian.Template.slnx -c Release`
+- Test: `dotnet test --solution Bravellian.Template.slnx -c Release`
 - Pack: `dotnet pack Bravellian.Template.slnx -c Release -o ./nupkgs`
